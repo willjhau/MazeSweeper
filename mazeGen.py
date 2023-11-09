@@ -28,14 +28,36 @@ class gameParameters:
             self.mines = int(x * y * mineRatio)
         self.mineRatio = mineRatio
 
+    def __str__(self):
+        return "x (width): " + str(self.x) + ",\ny (height): " + str(self.y) + ",\nmines: " + str(self.mines)
+
 # Create defult difficulties
 EASY_DIFFICULTY = gameParameters(x = 9, y = 9, mines = 10)
 MEDIUM_DIFFICULTY = gameParameters(x = 16, y = 16, mines = 40)
 EXPERT_DIFFICULTY = gameParameters(x = 30, y = 16, mines = 99)
 
+class Maze:
+    def __init__(self, params):
+        self.params = params
+        self.maze = [[Square() for i in range(params.x)] for j in range(params.y)]
 
-class mazeGenerator:
-    def __init__(self, width, height, difficulty):
-        self.width = width
-        self.height = height
-        self.maze = [[0 for i in range(width)] for j in range(height)]
+
+class Square:
+    def __init__(
+        self,
+        north = True,
+        east = True,
+        south = True,
+        west = True,
+        mine = False
+        ):
+        self.north = north
+        self.east = east
+        self.south = south
+        self.west = west
+    
+    def makeMine(self):
+        self.mine = True
+    
+    def __str__(self):
+        return f"north: {self.north},\neast: {self.east},\nsouth: {self.south},\nwest: {self.west},\nmine: {self.mine}"
