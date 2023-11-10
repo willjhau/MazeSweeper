@@ -1,21 +1,12 @@
+import mazeGen
+import os
+
 #Level details for the standard levels
-BEGINNER = {
-    'rows': 9,
-    'columns': 9,
-    'mines':9
-}
+BEGINNER = mazeGen.gameParameters(x = 9, y = 9, mines = 10)
 
-INTERMEDIATE = {
-    'rows': 16,
-    'columns': 16,
-    'mines':40    
-}
+INTERMEDIATE = mazeGen.gameParameters(x = 16, y = 16, mines = 40)
 
-EXPERT = {
-    'rows': 16,
-    'columns': 30,
-    'mines':99
-}
+EXPERT = mazeGen.gameParameters(x = 30, y = 16, mines = 99)
 
 #Constants for the dimensions of the buttons in the header of the screen
 WIDE_BUTTON_WIDTH = 80
@@ -38,10 +29,20 @@ MINE_COLOR = (255, 0, 0)
 TEXT_COLOR = (0, 0, 0)
 COMPLETE_COLOR = (0, 255, 0)
 
+#Directory names
+ASSETS_DIR = 'Assets'
+MAZE_SAVE_DIR = 'Mazes'
+
 #Filenames/paths for the images required
-FLAG_PATH = 'flag.png'
-MINE_PATH = 'mine.png'
-FACE_PATH = 'face.png'
+FLAG_PATH = os.path.join(ASSETS_DIR, 'flag.png')
+MINE_PATH = os.path.join(ASSETS_DIR, 'mine.png')
+FACE_PATH = os.path.join(ASSETS_DIR, 'face.png')
 
 #Speed of the agent
 DELAY = 1
+
+# Constants mapping cardinal directions to numbers
+NORTH = 0
+EAST = 1
+SOUTH = 2
+WEST = 3
